@@ -16,11 +16,21 @@ OLEDディスプレイは非常に発色が良く、使われているチップS
 [aliexpressの2.8インチTFT-LCD(320x240 ILI9341)多数](https://www.aliexpress.com/item/Consumer-Electronics-Shop-Free-shipping-240x320-2-8-SPI-TFT-LCD-Touch-Panel-Serial-Port-Module/32601714462.html)
 
 
-当然、microSDインターフェイスは付属のSDカードインターフェイスに修正。他にもハードウェアをいじったので、
-回路図も参照してください。
+当然、microSDインターフェイスは付属のSDカードインターフェイスに修正。
+
+他にもハードウェアをいじったので、回路図も参照してください。
+
+[ハードウェア]()
+
+ソフトウェアは本ディレクトリのYahoo5NewsViewWithWeather.inoの他に、Librarisのライブラリ追加や修正が必要です。
+
+[ライブラリ]()
+
+また、動作にはフォントや元記事にある、各種ファイルをSDカードに入れる必要があります。（著作権等、元記事をしっかり読んで理解してください。）
 
 
-しかし、以下の箇所で苦労しました。
+
+今回移植で、以下の箇所で苦労しました。
 
 #### 1.SSD1331でサポートされている、CopyコマンドがILI9341に無い。
 
