@@ -20,7 +20,7 @@ Time ライブラリ ( Arduino 標準ライブラリ ver 1.5 )
 
 #### ライブラリの追加：
 
-Arduino\LibrariesにESP32_SD_ILI9341_Gadgets-masterを追加してください。
+Arduino\Librariesに[ESP32_SD_ILI9341_Gadgets-master](https://github.com/YMita2017/Yahoo5NewsViewWithWeather/tree/master/Libraries/ESP32_SD_ILI9341_Gadgets-master)を追加してください。
 
 
 
