@@ -17,6 +17,9 @@ OLEDディスプレイは非常に発色が良く、使われているチップS
 [aliexpressの2.8インチTFT-LCD(320x240 ILI9341)多数](https://www.aliexpress.com/item/Consumer-Electronics-Shop-Free-shipping-240x320-2-8-SPI-TFT-LCD-Touch-Panel-Serial-Port-Module/32601714462.html)
 
 
+[動作動画です](https://youtu.be/1hnR1zUxFmE)
+
+
 当然、microSDインターフェイスは付属のSDカードインターフェイスに修正。
 
 他にもハードウェアをいじったので、回路図も参照してください。
