@@ -24,7 +24,7 @@ OLEDディスプレイは非常に発色が良く、使われているチップS
 
 ソフトウェアは本ディレクトリのYahoo5NewsViewWithWeather.inoの他に、Librarisのライブラリ追加や修正が必要です。
 
-[ライブラリ]()
+[ライブラリ](https://github.com/YMita2017/Yahoo5NewsViewWithWeather/tree/master/Libraries)
 
 また、動作にはフォントや元記事にある、各種ファイルをSDカードに入れる必要があります。（著作権等、元記事をしっかり読んで理解してください。）
 
