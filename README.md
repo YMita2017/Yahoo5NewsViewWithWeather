@@ -1,8 +1,8 @@
 # Yahoo5NewsViewWithWeather
 mgo-tec電子工作さんオリジナルのESP32使用してYahooニュースと天気予報等表示をLCDに移植してみた
 
-mgo-tec電子工作さんが、ESP32+OLEDを使用してYahooニュースや時計、天気予報を表示するアプリを公開されています。
-  https://www.mgo-tec.com/
+[mgo-tec電子工作さん](https://www.mgo-tec.com/)が、ESP32+OLEDを使用してYahooニュースや時計、天気予報を表示するアプリを公開されています。
+  
 OLEDディスプレイは非常に発色が良く、使われているチップSSD1331も性能が良いため、良い動きをします。
 しかし、解像度が96x64と狭いのが残念。もう少し色々表示したい。
 って事で、各所で売られている2.8インチTFT-LCD(320x240 ILI9341)に移植してみました。
