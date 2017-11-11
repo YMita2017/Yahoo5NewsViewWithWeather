@@ -38,7 +38,7 @@ Arduino\Librariesに[ESP32_SD_ILI9341_Gadgets-master](https://github.com/YMita20
 入れてください。
 
 
-#### ESP32_WebGet-masterの修正
+#### ESP32_WebGetの修正
 
 [ESP32_WebGet](https://github.com/mgo-tec/ESP32_WebGet)をライブラリに追加してください。
 
