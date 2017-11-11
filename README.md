@@ -69,7 +69,7 @@ OLEDディスプレイは非常に発色が良く、使われているチップS
   
   [Need More SRAM](https://www.esp32.com/viewtopic.php?t=1482)
   
-  簡単に言えば、使っていないブルーツースを使わない設定にし、メモリを解放。
+  簡単に言えば、使っていないBluetoothを使わない設定にし、メモリを解放。
   
   ESP32を使用するのに、ハードウェア追加していますが、インストールした以下のディレクトリの
   
@@ -77,11 +77,12 @@ OLEDディスプレイは非常に発色が良く、使われているチップS
   
   Arduino\hardware\espressif\esp32\tools\sdk\include\config\sdkconfig.h
   
-  #define CONFIG_BT_RESERVE_DRAM 0x10000 -> #define CONFIG_BT_RESERVE_DRAM 0x0
+  以下の様に修正。
+  #define CONFIG_BT_RESERVE_DRAM 0x10000  ->  #define CONFIG_BT_RESERVE_DRAM 0x0
   
-  #define CONFIG_BTC_TASK_STACK_SIZE 8192 -> #define CONFIG_BTC_TASK_STACK_SIZE 1024
+  #define CONFIG_BTC_TASK_STACK_SIZE 8192  ->  #define CONFIG_BTC_TASK_STACK_SIZE 1024
   
-  #define CONFIG_BT_ENABLED 1 -> #define CONFIG_BT_ENABLED 0
+  #define CONFIG_BT_ENABLED 1  ->  #define CONFIG_BT_ENABLED 0
   
   これでかなりのメモリが解放されます。
 
