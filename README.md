@@ -1,6 +1,6 @@
 # Yahoo5NewsViewWithWeather
-mgo-tec電子工作さんオリジナルのESP32使用してYahooニュースと天気予報等表示をLCDに移植してみた
-
+## 本プログラムに対する問い合わせはmgo-tec電子工作さんやsquix78さんへの問い合わせはしないでください。）
+mgo-tec電子工作さんオリジナルのESP32使用してYahooニュースと天気予報等表示をLCDに移植してみました
 
 [mgo-tec電子工作さん](https://www.mgo-tec.com/)が、ESP32+OLEDを使用してYahooニュースや時計、天気予報を表示するアプリを公開されています。
 
