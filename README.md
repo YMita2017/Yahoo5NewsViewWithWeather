@@ -89,6 +89,7 @@ OLEDディスプレイは非常に発色が良く、使われているチップS
   Arduino\hardware\espressif\esp32\tools\sdk\include\config\sdkconfig.h
   
   以下の様に修正。
+  
   #define CONFIG_BT_RESERVE_DRAM 0x10000  ->  #define CONFIG_BT_RESERVE_DRAM 0x0
   
   #define CONFIG_BTC_TASK_STACK_SIZE 8192  ->  #define CONFIG_BTC_TASK_STACK_SIZE 1024
