@@ -1,8 +1,8 @@
-## ライブラリの修正
+## ライブラリの修正（注意：本修正については、mgo-tecさんやMiniGrafxへの問い合わせはしないでください。）
 
 元々のライブラリに対して追加や修正をしています。
 
-基本的なライブラリは[元記事](https://www.mgo-tec.com/blog-entry-4news-oled-scroll-esp32-dualcore-multitask.html)に従ってください。
+基本的なライブラリのインストールは[元記事](https://www.mgo-tec.com/blog-entry-4news-oled-scroll-esp32-dualcore-multitask.html)に従ってください。
 
 基本的に以下のライブラリで動作確認や追加・上書き修正しています。
 
