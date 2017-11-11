@@ -2,9 +2,27 @@
 
 元々のライブラリに対して追加や修正をしています。
 
+基本的なライブラリは[元記事](https://www.mgo-tec.com/blog-entry-4news-oled-scroll-esp32-dualcore-multitask.html)に従ってください。
+
+基本的に以下のライブラリで動作確認や追加・上書き修正しています。
+
+ESP32_SD_ShinonomeFNT  ( beta ver 1.21 )
+
+ESP32_SD_UTF8toSJIS  ( beta ver 1.21 )
+
+ESP32_WebGet ( beta ver 1.12 )
+
+Time ライブラリ ( Arduino 標準ライブラリ ver 1.5 )
+
+MiniGrafx (release 0.0.14)
+
+
+
 #### ライブラリの追加：
 
 Arduino\LibrariesにESP32_SD_ILI9341_Gadgets-masterを追加してください。
+
+
 
 #### ライブラリの修正：
 
@@ -17,3 +35,10 @@ Arduino\LibrariesにESP32_SD_ILI9341_Gadgets-masterを追加してください�
 次に、[Libraries\Mini_Grafx\src](https://github.com/YMita2017/Yahoo5NewsViewWithWeather/tree/master/Libraries/Mini_Grafx/src) から、7つのファイルを上書きしてMiniGrafxのsrcディレクトリに
 
 入れてください。
+
+
+#### ESP32_WebGet-masterの修正
+
+[ESP32_WebGet-master](https://github.com/mgo-tec/ESP32_WebGet)をライブラリに追加してください。
+
+[Libraries\ESP32_WebGet-master\src]()から、2つのファイルをESP32_WebGet-masterのsrcディレクトリに上書きしてください。
