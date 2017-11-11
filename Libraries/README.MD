@@ -14,6 +14,6 @@ Arduino\LibrariesにESP32_SD_ILI9341_Gadgets-masterを追加してください�
 
 動作確認はRelese 0.0.14に対して行っています。
 
-次に、[Libraries\Mini_Grafx\src]() から、7つのファイルを上書きしてMiniGrafxのsrcディレクトリに
+次に、[Libraries\Mini_Grafx\src](https://github.com/YMita2017/Yahoo5NewsViewWithWeather/tree/master/Libraries/Mini_Grafx/src) から、7つのファイルを上書きしてMiniGrafxのsrcディレクトリに
 
 入れてください。
