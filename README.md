@@ -20,7 +20,7 @@ OLEDディスプレイは非常に発色が良く、使われているチップS
 
 他にもハードウェアをいじったので、回路図も参照してください。
 
-[ハードウェア]()
+[ハードウェア](https://github.com/YMita2017/Yahoo5NewsViewWithWeather/tree/master/Hardware)
 
 ソフトウェアは本ディレクトリのYahoo5NewsViewWithWeather.inoの他に、Librarisのライブラリ追加や修正が必要です。
 
