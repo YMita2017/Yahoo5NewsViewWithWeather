@@ -5,8 +5,8 @@
 #include <MiniGrafxAdd.h> // add
 #include <ILI9341LR_SPI.h>// add
  
-const char* ssid = "ctc-g-97b2af"; //ご自分のルーターのSSIDに書き換えてください。
-const char* password = "8b78c3d1a7d87"; //ご自分のルーターのパスワードに書き換えてください。
+const char* ssid = "yourssid"; //ご自分のルーターのSSIDに書き換えてください。
+const char* password = "yourpassword"; //ご自分のルーターのパスワードに書き換えてください。
  
 const char* UTF8SJIS_file = "/font/Utf8Sjis.tbl"; //UTF8 Shift_JIS 変換テーブルファイル名を記載しておく
 const char* Shino_Zen_Font_file = "/font/shnmk16.bdf"; //全角フォントファイル名を定義
@@ -180,9 +180,9 @@ void YahooWeatherGET(uint8_t y0, uint32_t get_interval){
     char root_ca[2048];
     ESSG.Root_CA_SDcard_Read(Yahoo_rootca_file, root_ca); //SDカードに保存してあるルート証明書取得
     //東京の天気予報
-//    weather_str = _EWG.EWG_https_Web_Get(root_ca, "rss-weather.yahoo.co.jp", "/rss/days/46.xml",  '>', "</rss", "】 ", " - ", "|");
+    weather_str = _EWG.EWG_https_Web_Get(root_ca, "rss-weather.yahoo.co.jp", "/rss/days/46.xml",  '>', "</rss", "】 ", " - ", "|");
     //岐阜の天気予報
-    weather_str = _EWG.EWG_https_Web_Get(root_ca, "rss-weather.yahoo.co.jp", "/rss/days/5210.xml",  '>', "</rss", "】 ", " - ", "|");
+//    weather_str = _EWG.EWG_https_Web_Get(root_ca, "rss-weather.yahoo.co.jp", "/rss/days/5210.xml",  '>', "</rss", "】 ", " - ", "|");
     Serial.print("Weather forecast = "); Serial.println(weather_str);
     Serial.flush(); //シリアル出力が終わるまで待つ
     WeatherGetLastTime = millis();
