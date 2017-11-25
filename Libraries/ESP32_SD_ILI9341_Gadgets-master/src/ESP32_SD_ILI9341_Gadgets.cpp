@@ -72,8 +72,8 @@ void ESP32_SD_ILI9341_Gadgets::Gadgets_MyFont_Close(){
   Serial.println(" File Close");
 }
 //*********** 半角　東雲フォント　年月日表示 **********************
-void ESP32_SD_ILI9341_Gadgets::ShinonomeClock_YMD(uint8_t x0, uint8_t y0, uint8_t color){
-  if(day() != _day_t){
+void ESP32_SD_ILI9341_Gadgets::ShinonomeClock_YMD(uint8_t x0, uint8_t y0, uint8_t color, boolean Redraw){
+  if(day() != _day_t || Redraw){
     String ymd_str = "";
     char month_chr[3], day_chr[3];
     uint8_t fnt_buf[10][16];
@@ -90,8 +90,8 @@ void ESP32_SD_ILI9341_Gadgets::ShinonomeClock_YMD(uint8_t x0, uint8_t y0, uint8_
   }
 }
 //*********** 自作フォント 曜日　表示 **********************
-void ESP32_SD_ILI9341_Gadgets::MyFontClock_Weekday(uint8_t x0, uint8_t y0, uint8_t color){
-  if(weekday() != _weekday_t){
+void ESP32_SD_ILI9341_Gadgets::MyFontClock_Weekday(uint8_t x0, uint8_t y0, uint8_t color, boolean Redraw){
+  if(weekday() != _weekday_t || Redraw){
     uint8_t week_num = 10 + weekday() - 1;
 /*
     if(week_num == 10){
@@ -123,9 +123,9 @@ void ESP32_SD_ILI9341_Gadgets::Shinonome_Sec_Clock(uint8_t x0, uint8_t y0, char 
   }
 }
 //*********** 自作フォント時刻表示 **********************
-void ESP32_SD_ILI9341_Gadgets::MyFont_HM_Clock(uint8_t x0, uint8_t y0, char h_HorV1, char h_HorV2, char m_HorV1, char m_HorV2, uint8_t h_direction1, uint8_t h_direction2, uint8_t m_direction1, uint8_t m_direction2, uint16_t scl_interval, uint8_t color){
+void ESP32_SD_ILI9341_Gadgets::MyFont_HM_Clock(uint8_t x0, uint8_t y0, char h_HorV1, char h_HorV2, char m_HorV1, char m_HorV2, uint8_t h_direction1, uint8_t h_direction2, uint8_t m_direction1, uint8_t m_direction2, uint16_t scl_interval, uint8_t color, boolean Redraw){
 
-  if(millis() - _last_Hmin_time > scl_interval){ //時間、分表示設定
+  if(millis() - _last_Hmin_time > scl_interval || Redraw){ //時間、分表示設定
     char h_chr[3], m_chr[3];
 
     sprintf(h_chr, "%2d", hour());//ゼロを空白で埋める場合は%2dとすれば良い
