@@ -101,10 +101,10 @@ public:
   void Gadgets_Init();
   void Gadgets_MyFont_Init(const char* my_fontfile);
   void Gadgets_MyFont_Close();
-  void ShinonomeClock_YMD(uint8_t x0, uint8_t y0, uint8_t color);
-  void MyFontClock_Weekday(uint8_t x0, uint8_t y0, uint8_t color);
+  void ShinonomeClock_YMD(uint8_t x0, uint8_t y0, uint8_t color, boolean Redraw);
+  void MyFontClock_Weekday(uint8_t x0, uint8_t y0, uint8_t color, boolean Redraw);
   void Shinonome_Sec_Clock(uint8_t x0, uint8_t y0, char s_HorV1, char s_HorV2, uint8_t s_direction1, uint8_t s_direction2, uint16_t scl_interval, uint8_t color);
-  void MyFont_HM_Clock(uint8_t x0, uint8_t y0, char h_HorV1, char h_HorV2, char m_HorV1, char m_HorV2, uint8_t h_direction1, uint8_t h_direction2, uint8_t m_direction1, uint8_t m_direction2, uint16_t scl_interval, uint8_t color);
+  void MyFont_HM_Clock(uint8_t x0, uint8_t y0, char h_HorV1, char h_HorV2, char m_HorV1, char m_HorV2, uint8_t h_direction1, uint8_t h_direction2, uint8_t m_direction1, uint8_t m_direction2, uint16_t scl_interval, uint8_t color, boolean Redraw);
   void Shinonome8x16ClockScroll(char VorH, uint8_t ForB, char t_chr, char *Lt_chr, bool *fnt_read, uint8_t *scl_cnt, uint8_t x0, uint8_t y0, uint8_t color, uint8_t fnt[2][16]);
   void MyFont16x16ClockScroll(char VorH, uint8_t ForB, char t_chr, char *Lt_chr, bool *fnt_read, uint8_t *scl_cnt, uint8_t x0, uint8_t y0, uint8_t color, uint8_t fnt[2][16]);
   void YahooJ_Weather_TodayTomorrow(uint8_t y0, String str);
