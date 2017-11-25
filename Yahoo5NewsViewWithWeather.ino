@@ -4,9 +4,11 @@
 #include <MiniGrafx.h>  // add
 #include <MiniGrafxAdd.h> // add
 #include <ILI9341LR_SPI.h>// add
- 
-const char* ssid = "yourssid"; //ご自分のルーターのSSIDに書き換えてください。
-const char* password = "yourpassword"; //ご自分のルーターのパスワードに書き換えてください。
+
+#define RedrawPin 0
+
+const char* ssid = "ctc-g-97b2af"; //ご自分のルーターのSSIDに書き換えてください。
+const char* password = "8b78c3d1a7d87"; //ご自分のルーターのパスワードに書き換えてください。
  
 const char* UTF8SJIS_file = "/font/Utf8Sjis.tbl"; //UTF8 Shift_JIS 変換テーブルファイル名を記載しておく
 const char* Shino_Zen_Font_file = "/font/shnmk16.bdf"; //全角フォントファイル名を定義
@@ -44,6 +46,8 @@ uint16_t palette[] = {ILI9341_BLACK, // 0 add palette definition for MiniGrafx
                       }; //3
 
 boolean FDupdate = false;
+boolean Redraw = false;
+int RedrawPinState;
 
 //ESP32_SD_SSD1331_Gadgets ESSG;
 ESP32_SD_ILI9341_Gadgets ESSG;
@@ -111,6 +115,9 @@ void setup() {
   //Yahoonニュースピックアップ 初回GET
   WebGet[4] = Yahoo_RSS_GET("news.yahoo.co.jp", "/pickup/rss.xml", Yahoo_rootca_file, sj_txt[4], &sj_length[4]);
   NewsGetLastTime = millis();
+
+  pinMode(RedrawPin,INPUT);
+  RedrawPinState = digitalRead(RedrawPin);
  
   TaskHandle_t th; //ESP32 マルチタスク　ハンドル定義
   xTaskCreatePinnedToCore(Task1, "Task1", 4096, NULL, 5, &th, 0); //マルチタスク core 0 実行
@@ -132,8 +139,14 @@ void loop() {
     WebGet[4] = Yahoo_RSS_GET("news.yahoo.co.jp", "/pickup/rss.xml", Yahoo_rootca_file, sj_txt[4], &sj_length[4]);
     NewsGetLastTime = millis();
   }
+    
   YahooWeatherGET(24, 180000); //180秒毎に天気取得
   _EWG.NTP_Get_Interval(180000); //180秒毎にNTPサーバーから時刻取得
+
+  if(digitalRead(RedrawPin) == 0 && RedrawPinState == 1) {
+    Redraw = true;
+    RedrawPinState = 0;
+  }
   vTaskDelay(1);
 }
  
@@ -150,14 +163,18 @@ void Task1(void *pvParameters){
     ESSG.Scroll_1_line(32, 2, 4, 7, sj_txt[2], sj_length[2], &WebGet[2]); // 120
     ESSG.Scroll_1_line(48, 3, 3, 11, sj_txt[3], sj_length[3], &WebGet[3]); // 160
     ESSG.Scroll_1_line(64, 4, 8, 15, sj_txt[4], sj_length[4], &WebGet[4]); // 160
-    ESSG.ShinonomeClock_YMD(0, 82, 2); //東雲フォント年月日表示                                 // color = 0b10010011 = 0x67 = 0b1000010000010000 = 0x8410  2
-    ESSG.MyFontClock_Weekday(80, 82, 3); //自作フォント曜日表示                                 // color = 0b11111111 = 0xff = 0b1111111111111111 = 0xffff  3
+    ESSG.ShinonomeClock_YMD(0, 82, 2, Redraw); //東雲フォント年月日表示                                 // color = 0b10010011 = 0x67 = 0b1000010000010000 = 0x8410  2
+    ESSG.MyFontClock_Weekday(80, 82, 3, Redraw); //自作フォント曜日表示                                 // color = 0b11111111 = 0xff = 0b1111111111111111 = 0xffff  3
     ESSG.Shinonome_Sec_Clock(80, 100, 'H', 'V', 0, 0, 15, 4); //東雲フォント秒表示               // color = 0b11100001 = 0xe1 = 0b1111100000000100 = 0xf804  4
-    ESSG.MyFont_HM_Clock(0, 100, 'H', 'V', 'H', 'V', 0, 0, 1, 1, 50, 4); //自作フォント時分表示  // color = 0b11100001 = 0xe1 = 0b1111100000000100 = 0xf804  4
+    ESSG.MyFont_HM_Clock(0, 100, 'H', 'V', 'H', 'V', 0, 0, 1, 1, 50, 4, Redraw); //自作フォント時分表示  // color = 0b11100001 = 0xe1 = 0b1111100000000100 = 0xf804  4
  
-    if(Weather_get){ //サーバーから天気予報取得できたら、OLED表示を更新
+    if(Weather_get || Redraw){ //サーバーから天気予報取得できたら、OLED表示を更新
       ESSG.YahooJ_Weather_TodayTomorrow2(82, weather_str);
       Weather_get = false;
+    }
+    if(Redraw == true) {
+      Redraw = false;
+      RedrawPinState = 1;
     }
   _ili9341.commitdouble();
   vTaskDelay(1);
@@ -180,9 +197,9 @@ void YahooWeatherGET(uint8_t y0, uint32_t get_interval){
     char root_ca[2048];
     ESSG.Root_CA_SDcard_Read(Yahoo_rootca_file, root_ca); //SDカードに保存してあるルート証明書取得
     //東京の天気予報
-    weather_str = _EWG.EWG_https_Web_Get(root_ca, "rss-weather.yahoo.co.jp", "/rss/days/46.xml",  '>', "</rss", "】 ", " - ", "|");
+//    weather_str = _EWG.EWG_https_Web_Get(root_ca, "rss-weather.yahoo.co.jp", "/rss/days/46.xml",  '>', "</rss", "】 ", " - ", "|");
     //岐阜の天気予報
-//    weather_str = _EWG.EWG_https_Web_Get(root_ca, "rss-weather.yahoo.co.jp", "/rss/days/5210.xml",  '>', "</rss", "】 ", " - ", "|");
+    weather_str = _EWG.EWG_https_Web_Get(root_ca, "rss-weather.yahoo.co.jp", "/rss/days/5210.xml",  '>', "</rss", "】 ", " - ", "|");
     Serial.print("Weather forecast = "); Serial.println(weather_str);
     Serial.flush(); //シリアル出力が終わるまで待つ
     WeatherGetLastTime = millis();
